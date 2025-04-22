@@ -10,12 +10,65 @@ This is a backend server for a **Job Portal** application. It's built using **No
 
 ---
 
-## 📁 Folder Structure
+# Project Folder Structure
 
-src/ ├── config/ # Database connection logic │ └── connectDB.ts ├── const/ # App-wide constants like MONGO_URI │ └── db.ts ├── controllers/ # Handles incoming requests and sends responses │ └── auth.controller.ts ├── middlewares/ # Middlewares for auth and validation │ ├── auth.middleware.ts │ └── validateRequest.ts ├── models/ # Mongoose schemas for MongoDB │ └── user.model.ts ├── routes/ # API route handlers │ ├── auth.routes.ts │ └── index.ts ├── services/ # Business logic for each feature │ └── auth.service.ts ├── types/ # Custom TypeScript types and interfaces │ └── index.d.ts ├── utils/ # Helper functions (password, token, response) │ ├── apiResponse.ts │ ├── comparePassword.ts │ ├── hashPassword.ts │ └── generateToken.ts ├── app.ts # Express app setup └── index.ts # Entry point that starts the server
+This is the folder structure of the backend application, which follows the **MERN stack** (MongoDB, Express, React, Node.js) architecture.
 
+## `src/` - Source Code
+All the source code resides inside this folder.
+
+### `config/`
+Contains configuration files like database connection logic.
+- **`connectDB.ts`** - Establishes the connection to MongoDB.
+
+### `const/`
+Contains app-wide constants and environment variables.
+- **`db.ts`** - Exports environment variables such as `MONGO_URI`.
+
+### `controllers/`
+Contains the logic to handle incoming HTTP requests and send responses.
+- **`auth.controller.ts`** - Handles authentication-related requests like login and registration.
+
+### `middlewares/`
+Contains reusable middleware functions that are used in the Express app.
+- **`auth.middleware.ts`** - Middleware to verify if the user is authenticated.
+- **`validateRequest.ts`** - Middleware to validate incoming requests using Zod or Joi.
+
+### `models/`
+Contains Mongoose schemas for MongoDB collections.
+- **`user.model.ts`** - Defines the schema for the `User` collection.
+
+### `routes/`
+Contains API route handlers.
+- **`auth.routes.ts`** - Defines routes for authentication-related operations.
+- **`index.ts`** - Combines all routes into a single router for use in the Express app.
+
+### `services/`
+Contains business logic related to each feature or module of the application.
+- **`auth.service.ts`** - Contains the logic for user authentication, registration, etc.
+
+### `types/`
+Contains custom TypeScript types and interfaces used throughout the application.
+- **`index.d.ts`** - Defines global interfaces and types.
+
+### `utils/`
+Contains helper functions that are used throughout the application.
+- **`apiResponse.ts`** - Standardizes the format of API responses.
+- **`comparePassword.ts`** - Compares hashed password with plain text.
+- **`hashPassword.ts`** - Hashes plain text passwords.
+- **`generateToken.ts`** - Generates JWT tokens for user authentication.
+
+### `app.ts`
+Sets up the Express app, middleware, routes, and other configurations.
+
+### `index.ts`
+The entry point of the application that connects the database and starts the server.
 
 ---
+
+This structure is designed to keep the code modular, clean, and scalable. Each feature of the app is placed in its own folder to maintain a clear separation of concerns.
+
+
 
 ## 📦 Technologies & Libraries
 
@@ -75,22 +128,33 @@ src/ ├── config/ # Database connection logic │ └── connectDB.ts �
 
 ## 🔧 How to Setup the Project
 
-### 1. Clone the repository
+`## Setup Instructions
+
+### 1. Clone the Repository
+
+1. Clone the project from GitHub:
 
 ```bash
-git clone https://github.com/your-username/job-portal-backend.git
+git clone https://github.com/shivank121/job-portal-backend.git
 cd job-portal-backend
 
 npm install
+```
 
+### 2. Configure Environment Variables
 
-### 2. Setup the dotenv (.env)
+To configure the environment variables, create a `.env` file in the root directory of the project and add the following configuration:
+
+```env
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/jobportal
 JWT_SECRET=your_jwt_secret
 
-### 
+```
+
+```bash
 npm run dev
+```
 
 
 
